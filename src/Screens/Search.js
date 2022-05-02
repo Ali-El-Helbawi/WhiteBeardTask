@@ -85,6 +85,9 @@ const SearchScreen = ({navigation}) => {
             setFinalIndex(resp.data.length);
             setModalVisible(false);
           } else {
+            setAllData([]);
+            setData([]);
+            setFinalIndex(0);
             setModalVisible(false);
             setNoResult(true);
             // setErrMsg('No data found');
@@ -147,7 +150,7 @@ const SearchScreen = ({navigation}) => {
       <View style={{marginVertical: 15}}>
         {noResult && (
           <Text style={styles.listEmptyComponent}>
-            {`no results, make sure you have entered a valid country`}
+            {`No results found. \nMake sure that you type a real country name .`}
           </Text>
         )}
       </View>
@@ -220,13 +223,18 @@ const SearchScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: 'white'},
-  subContainer: {marginHorizontal: 24, marginVertical: 24, marginBottom: 48},
+  subContainer: {marginHorizontal: 24, marginVertical: 24, paddingBottom: 60},
   listFooterComponent: {
     textAlign: 'center',
     fontSize: 22,
     fontWeight: '500',
   },
-  listEmptyComponent: {textAlign: 'center', fontSize: 16, fontWeight: '500'},
+  listEmptyComponent: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '500',
+    color: 'rgba(0,0,0,0.8)',
+  },
   itemSeparatorComponent: {
     height: 1,
     width: '100%',
