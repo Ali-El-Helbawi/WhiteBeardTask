@@ -141,6 +141,7 @@ const MainNavigation = () => {
         component={CategoriesStackScreen}
         options={{
           tabBarLabel: 'Categories',
+          //tabBarLabelStyle: {color: 'red'},
           tabBarIcon: ({color, size}) => (
             <FontAwesome name="list" color={color} size={size} />
           ),

@@ -14,7 +14,11 @@ import com.whitebeardtask.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-
+//
+import android.content.res.Configuration;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+//
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -55,6 +59,7 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    adjustFontScale(getResources().getConfiguration()); ///added
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
@@ -93,7 +98,14 @@ public class MainApplication extends Application implements ReactApplication {
   }
 
 
-
+public void adjustFontScale(Configuration configuration){
+configuration.fontScale = (float) 1.0;
+DisplayMetrics metrics = getResources().getDisplayMetrics();
+WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+wm.getDefaultDisplay().getMetrics(metrics);
+metrics.scaledDensity = configuration.fontScale * metrics.density;
+getBaseContext().getResources().updateConfiguration(configuration, metrics);
+}
 
 
 
