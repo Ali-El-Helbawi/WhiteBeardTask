@@ -7,7 +7,7 @@ import SearchScreen from '../Screens/Search';
 import WebViewScreen from '../Screens/WebView';
 import CategoriesScreen from '../Screens/Categories';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import ListScreen from '../Screens/Testing';
 import {CardStyleInterpolators} from '@react-navigation/stack';
 import {createStackNavigator} from '@react-navigation/stack';
 import {TransitionSpecs} from '@react-navigation/stack';
@@ -55,6 +55,7 @@ const SearchStackScreen = () => {
   return (
     <SearchStack.Navigator
       initialRouteName="Search"
+      //initialRouteName="ListScreen"
       screenOptions={{
         headerShown: false,
         // gestureEnabled: true,
@@ -73,6 +74,14 @@ const SearchStackScreen = () => {
 
         // }}
       />
+      <SearchStack.Screen
+        name="ListScreen"
+        component={ListScreen}
+        // options={{
+
+        // }}
+      />
+
       <SearchStack.Screen
         name="WebView"
         component={WebViewScreen}
